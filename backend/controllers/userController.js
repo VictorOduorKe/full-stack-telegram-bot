@@ -29,6 +29,10 @@ const registerUser = asyncHandler(async (req, res) => {
 // @desc    Authenticate user & get token
 const authUser = asyncHandler(async (req, res) => {
   const { email, password } = req.body;
+  if (!email || !password) {
+    res.status(400).json({message:"Please provide email and password"});
+    throw new Error('Please provide email and password');
+  }
   const user = await User.findOne({ email });
 
   if (user && (await user.matchPassword(password))) {
