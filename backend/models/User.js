@@ -16,6 +16,14 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    telegramSession: {
+      type: String,
+      default: null,
+    },
+    telegramPhone: {
+      type: String,
+      default: null,
+    },
   },
   {
     timestamps: true,
